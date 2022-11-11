@@ -1,0 +1,32 @@
+﻿@page
+@model LogoutModel
+@{
+    ViewData["Title"] = "Log out";
+}
+
+<header>
+    <h3>Logout</h3>
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                <div class="checkbox">
+                    <label asp-for="Input.CheckDelete" class="form-check-label">  </label>
+                    <input asp-for="Input.CheckDelete" class="form-check-input"  />                                            
+                </div>
+                <div>
+                    <p></p>
+                </div>
+                <button type="submit" class="btn btn-lg btn-primary">Çıkış</button>
+                
+            </form>
+
+
+            <a asp-page="/Index" class="btn btn-link text-dark">Ana Sayfaya Dön</a>
+        }
+        else
+        {
+            <p>You have successfully logged out of the application.</p>
+        }
+    }
+</header>
